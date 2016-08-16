@@ -1,15 +1,15 @@
-card_number = "4024007136512380"
+card_number = "342804633855673"
 valid = false
 doubled = []
 summed_digits = []
 
-individual_numbers = card_number.split("")
+individual_numbers = card_number.split("").reverse!
 
 # from the rightmost digit, which is the check digit, moving left, double the
 #value of every second digit
 individual_numbers.each_with_index do |num, i|
   num = num.to_i
-  if i % 2 == 0
+  if i % 2 == 1
     num *= 2
   end
   doubled.push(num)
