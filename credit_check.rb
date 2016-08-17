@@ -38,11 +38,19 @@ CARD_NUMBERS.each do |card_number|
   valid = true if final % 10 == 0
 
   # Output
+  #Identify card type for prettier output!
+
+  if reversed_numbers.length == 15
+    card_type = "American Express"
+  else
+    card_type = "credit card"
+  end
+
   ## If it is valid, print "The number is valid!"
   ## If it is invalid, print "The number is invalid!"
   if valid
-    puts "The number is valid!"
+    puts "The #{card_type} is valid!"
   else
-    puts "The number is invalid!"
+    puts "The #{card_type} is invalid!"
   end
 end
