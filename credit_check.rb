@@ -1,29 +1,24 @@
 card_number = "342804633855673"
 valid = false
-doubled = []
-summed_digits = []
-
-individual_numbers = card_number.split("").reverse!
 
 # from the rightmost digit, which is the check digit, moving left, double the
 #value of every second digit
-individual_numbers.each_with_index do |num, i|
+reversed_numbers = card_number.split("").reverse!
+doubled = []
+reversed_numbers.each_with_index do |num, idx|
   num = num.to_i
-  if i % 2 == 1
-    num *= 2
-  end
+  num *= 2 if idx.odd?
   doubled.push(num)
 end
 
 # if product of this doubling operation is greater than 9 (e.g., 7 * 2 = 14),
 #then sum the digits of the products (e.g., 10: 1 + 0 = 1, 14: 1 + 4 = 5).
-doubled.each do |num|
+summed_digits = doubled.map do |num|
   if num > 9
     new_num = ((num / 10) + (num % 10))
   else
-    new_num = num
+    num
   end
-  summed_digits.push(new_num)
 end
 
 # take the sum of all the digits
